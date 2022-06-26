@@ -45,23 +45,24 @@ func createRouter() *mux.Router {
 
 	router.HandleFunc("/headers", func(w http.ResponseWriter, r *http.Request) {
 		headers := r.Header
+
 		if headers == nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		if _, ok := headers["a"]; !ok {
+		if _, ok := headers["A"]; !ok {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		if _, ok := headers["b"]; !ok {
+		if _, ok := headers["B"]; !ok {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		headerA := headers["a"][0]
-		headerB := headers["b"][0]
+		headerA := headers["A"][0]
+		headerB := headers["B"][0]
 
 		intA, err := strconv.Atoi(headerA)
 		if err != nil {
