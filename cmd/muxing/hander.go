@@ -77,8 +77,8 @@ func createRouter() *mux.Router {
 		}
 
 		w.Header().Add(
-			fmt.Sprintf("%s+%s", headerA, headerB),
-			fmt.Sprintf("%d", intA+intB),
+			fmt.Sprintf("\"%s+%s\"", headerA, headerB),
+			fmt.Sprintf("\"%d\"", intA+intB),
 		)
 
 		w.WriteHeader(http.StatusOK)
